@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>PupHub Map</title>
+      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+      <style>
+        body { margin:0; padding:10px; }
+        #map { position:absolute; top:10%; bottom:10%; left:10%; right: 10%; width:80%; }
+        .marker {
+            display: block;
+            border: none;
+            border-radius: 100%;
+            cursor: pointer;
+            padding: 0;
+            }
+      </style>
+    </head>
+    <body>
+
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
+        
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+
+        <div id='map'></div>
+        
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiYWRlY2FsbCIsImEiOiJjam0yenlkZGgxM3Q2M3dteTFydTI5d2p2In0.tGUbcvZRdyppHNyeZhM--Q';
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+                center: [-118.4458122, 34.0594521], // starting position [lng, lat]
+                zoom: 17 // starting zoom
+            });
+
+            var geojson = {
+                "type": "FeatureCollection",
+                "features": [
+                        {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Agoura Animal Care Center",
+                            "address": "29525 Agoura Rd, Agoura, CA 91301",
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-118.7694248, 34.1460223]           
+                        }
+                    },
+                        {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Baldwin Park Animal Care",
+                            "address": "4275 N Elton Ave, Baldwin Park, CA 91706",
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [-117.9533509, 34.091344]
+                        }
+                    },
+                        {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Beverly Hills Animal Control", 
+                            "address": "455 N Rexford Drive, Beverly Hills, CA 90210",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.4025932, 34.0728923]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Burbank Animal Shelter", 
+                            "address": "1150 N Victory Pl, Burbank, CA 91502",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.3250528, 34.1873837]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Carson/Gardena Animal Care Center",
+                            "address": "216 W Victoria St, Carson, CA 90248",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2796549, 33.8643279]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "Castaic Animal Care Center",
+                            "address": "31044 N Charlie Canyon Rd, Castaic, CA 91384",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.609402, 34.4834312]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "City of Commerce Animal Control",
+                            "address": "2535 Commerce Way, Commerce, CA 90040",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.1583737, 34.000714]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "Downey Animal Care Center",
+                            "address": "11258 S Garfield Ave, Downey, CA 90242",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.170773, 33.9250403]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "Duarte Animal Control",
+                            "address": "1042 Huntington Dr, Duarte, CA 91010",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-117.9859917, 34.1382853]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "East Valley Shelter",  
+                            "address": "14409 Vanowen St, Van Nuys, CA 91405",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.4484149, 34.1943841]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Glendale Humane Society", 
+                            "address": "717 W Ivy St, Glendale, CA 91204",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2728262, 34.1460024]  
+                        }
+                    },                  
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Harbor Shelter", 
+                            "address": "957 N Gaffey St, San Pedro 90731",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2963944, 33.7520661]  
+                        }
+                    },                                                                  
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Hawthorne Animal Control", 
+                            "address": "4455 W 126th St, Hawthorne, CA 90250",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.3565104, 33.9185393]  
+                        }
+                    },                   
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Inland Valley Humane Society/SPCA", 
+                            "address": "500 Humane Way, Pomona, CA 91766",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-117.7923891, 34.0525361]  
+                        }
+                    },                                                           
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "Lancaster Animal Care Center",
+                            "address": "5210 W Avenue 'I', Lancaster, CA 93536",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2254102, 34.7037667]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "name": "Long Beach Animal Control",
+                            "address": "7700 E Spring St, Long Beach, CA 90815",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.0848755,33.8094986]  
+                        }
+                    },                                       
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Los Angeles SPCA/Southern California Humane Society - South Bay Pet Adoption Center", 
+                            "address": "12910 Yukon Ave, Hawthorne, CA 90250",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.3371057, 33.9150943]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Los Angeles SPCA/Southern California Humane Society - P.D. Pitchford Campanion Animal Village & Education Center", 
+                            "address": "7700 E Spring St, Long Beach, CA 90815",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.0848755, 33.8094986]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Los Angeles SPCA/Southern California Humane Society - Petsmart Charities Everyday Adoption Center (PetSmart)", 
+                            "address": "8852 Washington Blvd, Pico Rivera, CA 90660",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.1018645, 33.9827395]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Lynwood Animal Control", 
+                            "address": "11330 Bullis Rd, Lynwood, CA 90262",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2012568, 33.9263973]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Manhattan Beach Animal Control", 
+                            "address": "420 15th St, Manhattan Beach, CA 90266",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.4116302, 33.8872682]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "North Central Shelter", 
+                            "address": "3201 Lacy St, Los Angeles, CA 90031",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.2209968,34.0835506]  
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Palmdale Animal Care Center (L.A. County)", 
+                            "address": "38550 Sierra Highway Palmdale, CA 93550",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.1167225, 34.5828179]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Pasadena Humane Society & SPCA", 
+                            "address": "361 S Raymond Ave Pasadena, CA 91105",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.1490708, 34.1394215]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "Rosemead Animal Control",  
+                            "address": "8301 E Garvey Ave Rosemead, CA 91770",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates":[-118.0871545, 34.0630225] 
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "San Gabriel Valley Humane Society",  
+                            "address": "851 E Grand Ave San Gabriel, CA 91776",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.0907867, 34.0921057]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "Santa Monica Animal Control",  
+                            "address": "1640 Ninth St Santa Monica, CA 90401",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.4864989, 34.0166455]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "South LA Shelter (City of L.A.)", 
+                            "address": "1850 W 60th St Los Angeles, CA 90047",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.3110203, 33.9848841]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": { 
+                            "name": "Southeast Area Animal Control Center (SEAACA)", 
+                            "address": "9777 Seaaca St, Downey, CA 90241",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.1123136, 33.9223145]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "Temple City Animal Control", 
+                            "address": "9701 Las Tunas Dr, Temple City, CA 91780",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.0579901, 34.107623]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {
+                            "name": "Torrance Animal Control", 
+                            "address": "2200 Jefferson St, Torrance, CA 90501",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.3229963, 33.8267864]
+                        }
+                    },
+                    {
+                        "type": "Feature",  
+                        "properties": {  
+                            "location": "West LA Shelter (City of L.A.)",
+                            "address": "11361 West Pico Blvd, Los Angeles, CA 90064",  
+                            "iconSize": [50, 50]
+                        },
+                        "geometry": {
+                            "type": "Point",  
+                            "coordinates": [-118.440647, 34.0347218]
+                        }
+                    },
+                ]
+                };
+                
+            // add markers to map
+            geojson.features.forEach(function(marker) {
+                // create a DOM element for the marker
+                var el = document.createElement('div');
+                el.className = 'marker';
+                el.style.backgroundImage = 'url(https://placedog.net/75/g' + marker.properties.iconSize.join('/') + '/)';
+                el.style.width = marker.properties.iconSize[0] + 'px';
+                el.style.height = marker.properties.iconSize[1] + 'px';
+
+                el.addEventListener('click', function() {
+                    window.event(marker.properties.location);       
+                });
+                
+//                var coordinatesGeocoder = function (query) {
+//                    // match anything which looks like a decimal degrees coordinate pair
+//                    var matches = query.match(/^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i);
+//                    if (!matches) {
+//        return null;
+//    }
+
+//    function coordinateFeature(lng, lat) {
+//        return {
+//            center: [lng, lat],
+//            geometry: {
+//                type: "Point",
+//                coordinates: [lng, lat]
+//            },
+//            place_name: 'Lat: ' + lat + ', Lng: ' + lng, // eslint-disable-line camelcase
+//            place_type: ['coordinate'], // eslint-disable-line camelcase
+//            properties: {},
+//            type: 'Feature'
+//        };
+//    }
+//
+//    var coord1 = Number(matches[1]);
+//    var coord2 = Number(matches[2]);
+//    var geocodes = [];
+//
+//    if (coord1 < -90 || coord1 > 90) {
+//        // must be lng, lat
+//        geocodes.push(coordinateFeature(coord1, coord2));
+//    }
+//
+//    if (coord2 < -90 || coord2 > 90) {
+//        // must be lat, lng
+//        geocodes.push(coordinateFeature(coord2, coord1));
+//    }
+//
+//    if (geocodes.length === 0) {
+//        // else could be either lng, lat or lat, lng
+//        geocodes.push(coordinateFeature(coord1, coord2));
+//        geocodes.push(coordinateFeature(coord2, coord1));
+//    }
+//
+//    return geocodes;
+//};
+
+            // add marker to map
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+            });
+            map.addControl(new MapboxDirections({
+                accessToken: mapboxgl.accessToken
+                }), 'top-left');
+                
+            map.addControl(new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                localGeocoder: coordinatesGeocoder,
+                zoom: 4,
+                placeholder: "Try: -40, 170"
+            }));
+            </script>
+        </body>        
+</html>

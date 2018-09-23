@@ -1,0 +1,97 @@
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-df0238a1-f66d-41a2-b1ee-f294594e2cbd"></div>
+<br>
+<br>
+<div class="picturePlace">
+{{#each pets}}
+{{#if photo}}
+<img src="{{photo}}" id="animalPhoto"/>
+{{/if}}
+</div>
+<br>
+<div id="searchResults">
+<h4>BASIC INFORMATION</h4>
+<p>Hi! My name is {{name.$t}}</p>
+{{description.$t}}
+<br>
+<br>
+<h4>DATA FROM THE SHELTER</h4>
+<p>Age: I'm a {{age.$t}}</p>
+<p>Sex: {{sex.$t}} </p>
+<p>Breed: {{breed.$t}}</p>
+<p>Location: {{location.$t}}</p>
+<p>City: {{city.$t}}</p>
+<p>State: {{state.$t}}</p>
+<p>Zip Code: {{zip.$t}}</p>
+<p>Phone: {{phone.$t}}</p>
+<p>Email: {{email.$t}}</p>
+{{/each}}
+<br>
+<p>PLEASE LEAVE US YOUR THOUGHTS AND COMMENTS</p>
+</div>
+<div id="twoButtons">
+<p><button class="w3-button w3-pale-green">
+<p id="currentoffset">{{currentOffset}}</p></button></p>
+<br>
+<a href='/getpets/{{zipCode}}/{{animal}}/{{size}}/{{sex}}/{{age}}?offset={{nextOffset}}'>
+<p><button class="w3-button w3-light-green">NEXT</button></p>
+</div>
+</a>
+<br>
+
+<iframe src="https://player.vimeo.com/video/177474578?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<br>
+<div id="extraButton">
+<p><button class="w3-button w3-pale-green">LOGIN</p>
+</div>
+<br>
+<div id="extraButton">
+<p><button class="w3-button w3-light-green">REG.</button></p>
+</div>
+<br>
+<div class="empty2">
+<table>
+<tr>
+<th>SIT</th>
+<th>LIE DOWN</th>
+<th>PAY ATTENTION</th>
+<th>GOOD IN CRATE</th>
+<th>GOOD ON LEASH</th>
+</tr>
+<tr>
+<td>&#9733;&#9733;&#9733;</td>
+<td>&#9733;&#9733;</td>
+<td>&#9733;</td>
+<td>&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+<td>&#9733;&#9733;&#9733;&#9733;</td>
+</tr>
+</table>
+</div>
+<br>
+<div class="empty">
+	<form id="newComment">
+		<br>
+		<label for="firstname">First Name</label>
+			<input type="text" class="fname" name="firstname">
+		
+		<label for="lastname">Last Name</label>
+			<input type="text" class="lname" name="lastname">
+	
+		<label for="subject">Subject</p>
+			<textarea class="subject" name="subject" style="height:200px"></textarea>
+            <br>
+            <div id="lastButton">
+		<p><button class="w3-button w3-light-green">GO!</button></p>
+
+</div>
+	</form>		
+</div>	
+<br>
+{{#each comments}}
+<p>Name: {{firstName}} {{lastName}}</p>
+<p>comment: {{comment}}</p>
+{{/each}}
+
+<br>
+<iframe src="/map" style="height: 800px; width: 80%">
+</iframe>
