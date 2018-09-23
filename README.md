@@ -20,3 +20,6 @@ Puphub will make this collaborative work easier and more informative––to the
 We welcome all comments and suggestions. Thanks for your time:
 
 Albert, Jason, and David.
+
+
+PS. Node muodules / Asset files were removed due to size constraints. 
