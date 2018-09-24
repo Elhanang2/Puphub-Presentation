@@ -9,7 +9,7 @@ So why not create an app that looks better, is easier to use, and makes consider
 
 The files contained here are but one step towards a tool for animal lovers, adopters, and shelter staff. Their collaboration can be very important: information gathered by volunteers, for example, creates a vital context for the animals. Suddenly a dog or cat is no longer a mere statistic. The shelter staff and volunteers exercise and care for the animals every day. They already take detailed notes, albeit on paper. The public is welcome to see the data, but is rarely aware of its existence. 
 
-Puphub will make this collaborative work easier and more informative––to the benefit of all cats and dogs. An animal that *looks* worrying might instead be profiled online with upbeat, informatives notes from volunteers. All of sudden, a dog or cat is adopted. A poor first impression is quickly corrected. 
+Puphub will make this collaborative work easier and more informative––to the benefit of all cats and dogs. An animal that *looks* worrying might instead be profiled online with upbeat, informative notes from volunteers. All of sudden, a dog or cat is adopted. A poor first impression is quickly corrected. 
 
 We welcome all comments and suggestions. Thanks for your time:
 
